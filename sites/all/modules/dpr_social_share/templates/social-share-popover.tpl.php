@@ -106,7 +106,7 @@ switch($number_of_icons){
         });
 
         FB.ui({
-            method: 'share',
+            method: 'share_open_graph ',
             display: 'popup',
             href: url,
         }, function(response){});
