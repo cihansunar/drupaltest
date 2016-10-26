@@ -1,0 +1,5 @@
+name = Social Share Module
+description = Social share functionality
+package = DPR
+core = 7.x
+configure = admin/config/content/dpr_social_share

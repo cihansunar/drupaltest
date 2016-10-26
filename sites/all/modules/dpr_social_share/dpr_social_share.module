@@ -1,0 +1,185 @@
+<?php
+
+
+
+
+function dpr_social_share_help($path, $arg) {
+  switch ($path) {
+    case "admin/help#dpr_social_share":
+      return '<p>'.  t("Socail Share Functionality") .'</p>';
+      break;
+  }
+} 
+
+
+/**
+ * Implements hook_menu().
+ * 
+ * Menu items are automatically translated, and should not 
+ * be wrapped in t().   
+ */
+function dpr_social_share_menu() {
+  $items = array();  
+
+  $items['admin/config/content/dpr_social_share'] = array(
+    'title' => 'DPR Social Share',
+    'description' => 'Configuration for DPR Social Share module',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('dpr_social_share_form'),
+    'access arguments' => array('access administration pages'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+  
+
+  return $items;
+}  
+
+/**
+ * Form function, called by drupal_get_form() 
+ * in current_posts_menu().
+ */
+function dpr_social_share_form($form, &$form_state) {
+
+  $form['dpr_social_share_enabled'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Social Share Switch'),
+    '#default_value' => variable_get('dpr_social_share_enabled', TRUE),
+    '#description' => t('Enable or Disable Social Share Functionality')
+  );
+
+  $form['dpr_social_share_attractions_view_enabled'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Attractions Social Share Switch '),
+    '#default_value' => variable_get('dpr_social_share_attractions_view_enabled', TRUE),
+    '#description' => t('Enable or Disable Social Share Functionality on Attractions Page')
+  );
+
+  $form['dpr_social_share_attraction_details_enabled'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Attraction Details Social Share Switch'),
+    '#default_value' => variable_get('dpr_social_share_attraction_details_enabled', TRUE),
+    '#description' => t('Enable or Disable Social Share Functionality on Attraction Details Page')
+  );
+
+
+  $form['dpr_social_share_shopping_view_enabled'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Shopping Social Share Switch '),
+    '#default_value' => variable_get('dpr_social_share_shopping_view_enabled', TRUE),
+    '#description' => t('Enable or Disable Social Share Functionality on Shopping Page')
+  );
+
+  $form['dpr_social_share_shopping_details_enabled'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Shopping Details Social Share Switch'),
+    '#default_value' => variable_get('dpr_social_share_shopping_details_enabled', TRUE),
+    '#description' => t('Enable or Disable Social Share Functionality on Shopping Details Page')
+  );
+
+
+    $form['dpr_social_share_dining_view_enabled'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Dining Social Share Switch '),
+    '#default_value' => variable_get('dpr_social_share_dining_view_enabled', TRUE),
+    '#description' => t('Enable or Disable Social Share Functionality on Dining Page')
+  );
+
+  $form['dpr_social_share_dining_details_enabled'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Dining Details Social Share Switch'),
+    '#default_value' => variable_get('dpr_social_share_dining_details_enabled', TRUE),
+    '#description' => t('Enable or Disable Social Share Functionality on Dining Details Page')
+  );
+
+
+  $form['dpr_social_share_live_entertainment_view_enabled'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Live Entertainment Social Share Switch '),
+    '#default_value' => variable_get('dpr_social_share_live_entertainment_view_enabled', TRUE),
+    '#description' => t('Enable or Disable Social Share Functionality on Live Entertainment Page')
+  );
+
+  $form['dpr_social_share_live_entertainment_details_enabled'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Live Entertainment Details Social Share Switch'),
+    '#default_value' => variable_get('dpr_social_share_live_entertainment_details_enabled', TRUE),
+    '#description' => t('Enable or Disable Social Share Functionality on Live Entertainment Details Page')
+  );
+
+
+  $form['dpr_social_share_twitter_enabled'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Twitter Share Switch'),
+    '#default_value' => variable_get('dpr_social_share_twitter_enabled', TRUE),
+    '#description' => t('Enable or Disable Twitter Share Functionality')
+  );
+
+  $form['dpr_social_share_google_enabled'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Google Plus Share Switch'),
+    '#default_value' => variable_get('dpr_social_share_google_enabled', TRUE),
+    '#description' => t('Enable or Disable Google Plus Share Functionality')
+  );
+
+  $form['dpr_social_share_instagram_enabled'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Instagram Share Switch'),
+    '#default_value' => variable_get('dpr_social_share_instagram_enabled', FALSE),
+    '#description' => t('Enable or Disable Instagram Share Functionality')
+  );
+
+  $form['dpr_social_share_facebook_enabled'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Facebook Share Switch'),
+    '#default_value' => variable_get('dpr_social_share_facebook_enabled', FALSE),
+    '#description' => t('Enable or Disable Facebook Share Functionality')
+  );
+
+  $form['dpr_social_share_facebook_app_id'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Facebook App Id'),
+    '#default_value' => variable_get('dpr_social_share_facebook_app_id', ""),
+    '#description' => t('Facebook Developer App Id')
+  );
+
+  $form['dpr_social_share_instagram_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Instagram page of the park'),
+    '#default_value' => variable_get('dpr_social_share_instagram_url', ""),
+    '#description' => t('Instagram page of the park to be navigated when clicked to the instagram button')
+  );
+  //Takes care of providing submit button and user messages.
+  return system_settings_form($form);
+}
+
+/**
+ * Implements validation from the Form API.
+ * 
+ * The function name is created in a similar way to a hook, 
+ * by appending '_validate' to the name of the form, as defined by 
+ * the function above and passed to drupal_get_form in current_posts_menu().
+ * 
+ * @param $form
+ *   A structured array containing the elements and properties of the form.
+ * @param $form_state
+ *   An array that stores information about the form's current state 
+ *   during processing.
+ */
+function dpr_social_share_form_validate($form, &$form_state){
+  
+  $facebookEnabled = $form_state['values']['dpr_social_share_facebook_enabled'];
+  $facebookAppId = $form_state['values']['dpr_social_share_facebook_app_id'];
+  if ($facebookEnabled && empty($facebookAppId) ){
+    form_set_error('dpr_social_share_facebook_app_id', t('You must provide Facebook Developer Id when Facebook Social Share enabled.'));
+  }
+
+  $instagramEnabled = $form_state['values']['dpr_social_share_instagram_enabled'];
+  $instagramUrl = $form_state['values']['dpr_social_share_instagram_url'];
+  if ($instagramEnabled && empty($instagramUrl) ){
+    form_set_error('dpr_social_share_instagram_url', t('You must provide instagram page when Instagram Social Share enabled.'));
+  }
+}
+
+
+
+

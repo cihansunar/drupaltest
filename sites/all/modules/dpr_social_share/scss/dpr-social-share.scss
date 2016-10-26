@@ -1,0 +1,87 @@
+$popover-bg: #9B258E;
+
+.socialmedia-popover{
+    height: 3em;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1060;
+    display: none;
+    max-width: 320px;
+    padding: 1px;
+    text-align: left;
+    text-align: start;
+    font-size: 18px;
+    background-color: $popover-bg;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    &.one-icon{
+        width: 2.9em;
+    }
+    &.two-icons{
+        width: 5.3em;
+    }
+    &.three-icons{
+        width: 8em;
+    }
+    &.four-icons{
+        width: 10.8em;
+    }
+    &.bottom{
+        margin-top: 20px;
+		.arrow{
+			margin-left: -11px;
+			border-top-width: 0;
+			border-bottom-color: $popover-bg;
+			top: -11px;
+		}
+    }
+    .arrow{
+        left: 50% !important;
+        border-width: 11px;
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        border-color: transparent;
+        border-style: solid;
+        &:after{
+            box-sizing: border-box;
+        }
+        &:before{
+            box-sizing: border-box;
+        }
+    }
+
+    .popover-content {
+        padding: 0 0 !important;
+        border-radius: 10px;
+        .socialmedia-image{
+            padding: 10px 0;
+            z-index: 1;
+            right: 0;
+            width: inherit;
+            bottom: 0;
+            display: inline-block;
+            background-color: transparent;
+            & > a {
+                float: left;
+                padding: 0 8px;
+                border-right: 1px solid #fff;
+                box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                -webkit-box-sizing: border-box;
+                text-decoration: none; 
+                &:last-child {
+                    border-right: none;
+                }
+                i.icon:before {
+                    font-size: 30px;
+                    color: #fff;
+                    text-decoration: none; 
+                }
+            }
+        }
+    }
+}

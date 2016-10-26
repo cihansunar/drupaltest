@@ -1,0 +1,44 @@
+
+To test locally
+
+1. Make local.host Point to Your Computer
+
+First thing you need to do is (as answered in the first link), facebook won't take localhost as a valid callback site, because it confuses localhost with a top level domain (com org etc.) in other words there is not dot . in your domain name. So change your /etc/hosts to add the entry
+
+127.0.0.1   local.host
+Now youcan access your app at http://local.host/... (this will take effect as soon as you save /etc/hosts file, no need to restart anything)
+
+2. Add local.host as the Site URL on the facebook Dev Console
+
+The second thing you need to do is add local.host as the site url on the facebook page
+
+Now don't use your production app. Add a dummy app on your https://developers.facebook.com account Because your production app will have to set the site URL to your production URL and not local.host
+
+Configure the dummy app as shown in the screenshot. But that website section(shown in the screenshot) won't be visible on the Basic settings page from the beginning.
+
+First you will have to click + Add Platform button at the bottom, and select Website.
+
+
+
+
+<?php module_load_include('php', 'dpr_social_share', '/templates/entry-point.tpl'); ?>
+
+Then initialize it via javascript with this parameters at least:
+
+<script type="text/javascript">
+    (function ($) {
+        $(function(){
+           
+        });
+    }(jQuery));
+</script>
+
+
+3. To overwrite background color of popover according to specific project color code, add following code to main scss file
+
+.socialmedia-popover{
+    background-color: $<color name> !important;
+    .arrow{
+        border-bottom-color: $<color name> !important;
+    }
+}
