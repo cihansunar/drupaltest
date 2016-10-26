@@ -106,11 +106,9 @@ switch($number_of_icons){
         });
 
         FB.ui({
-            method: 'share_open_graph',
-            action_type: 'og.likes',
-            action_properties: JSON.stringify({
-                object: url,
-            })
+            method: 'share',
+            display: 'popup',
+            href: url,
         }, function(response){});
     };
 
