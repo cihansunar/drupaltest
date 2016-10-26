@@ -43,7 +43,7 @@ switch($number_of_icons){
             $("[rel=socialmedia]").on("mouseenter", function(){
                 var url = $(this).data("content-url");
                 var title = $(this).data("content-title");
-                var contentData = '<div class="socialmedia-image">'+
+                var content = '<div class="socialmedia-image">'+
                         <?php if (variable_get('dpr_social_share_facebook_enabled', TRUE)): ?>
                         '<a id="share-facebook" onclick="shareFacebook(\'' + url + '\')"><i class="icon icm-facebook"></i></a>'+
                         <?php endif; ?>
@@ -63,7 +63,7 @@ switch($number_of_icons){
                     trigger : 'manual',  
                     placement : 'bottom', 
                     html: 'true',
-                    content: contentData,
+                    content: content,
                     template : '<div class="socialmedia-popover <?= $popover_width ?> bottom"><div class="arrow"></div><div class="popover-content">' +
                             '</div></div>'
                  });
@@ -106,7 +106,7 @@ switch($number_of_icons){
         });
 
         FB.ui({
-            method: 'share_open_graph ',
+            method: 'share',
             display: 'popup',
             href: url,
         }, function(response){});
