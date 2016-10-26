@@ -1,0 +1,480 @@
+/*!
+ * Datepicker for Bootstrap v1.4.0 (https://github.com/eternicode/bootstrap-datepicker)
+ *
+ * Copyright 2012 Stefan Petre
+ * Improvements by Andrew Rowls
+ * Licensed under the Apache License v2.0 (http://www.apache.org/licenses/LICENSE-2.0)
+ */
+body.page-tickets .date .input-group-addon {
+    border-radius: 0;
+}
+body.page-tickets .datepicker {
+  padding: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  direction: ltr;
+}
+body.page-tickets .datepicker-inline {
+  width: 220px;
+}
+body.page-tickets .datepicker.datepicker-rtl {
+  direction: rtl;
+}
+body.page-tickets .datepicker.datepicker-rtl table tr td span {
+  float: right;
+}
+body.page-tickets .datepicker-dropdown {
+  top: 0;
+  left: 0;
+}
+body.page-tickets .datepicker-dropdown:before {
+  content: '';
+  display: inline-block;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid #ccc;
+  border-top: 0;
+  border-bottom-color: rgba(0, 0, 0, 0.2);
+  position: absolute;
+}
+body.page-tickets .datepicker-dropdown:after {
+  content: '';
+  display: inline-block;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid #ffffff;
+  border-top: 0;
+  position: absolute;
+}
+body.page-tickets .datepicker-dropdown.datepicker-orient-left:before {
+  left: 6px;
+}
+body.page-tickets .datepicker-dropdown.datepicker-orient-left:after {
+  left: 7px;
+}
+body.page-tickets .datepicker-dropdown.datepicker-orient-right:before {
+  right: 6px;
+}
+body.page-tickets .datepicker-dropdown.datepicker-orient-right:after {
+  right: 7px;
+}
+body.page-tickets .datepicker-dropdown.datepicker-orient-top:before {
+  top: -7px;
+}
+body.page-tickets .datepicker-dropdown.datepicker-orient-top:after {
+  top: -6px;
+}
+body.page-tickets .datepicker-dropdown.datepicker-orient-bottom:before {
+  bottom: -7px;
+  border-bottom: 0;
+  border-top: 7px solid #999;
+}
+body.page-tickets .datepicker-dropdown.datepicker-orient-bottom:after {
+  bottom: -6px;
+  border-bottom: 0;
+  border-top: 6px solid #ffffff;
+}
+body.page-tickets .datepicker > div {
+  display: none;
+}
+.datepicker.days .datepicker-days,
+.datepicker.months .datepicker-months,
+body.page-tickets .datepicker.years .datepicker-years {
+  display: block;
+}
+body.page-tickets .datepicker table {
+  margin: 0;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.datepicker td,
+body.page-tickets .datepicker th {
+  text-align: center;
+  width: 20px;
+  height: 20px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border: none;
+}
+.table-striped .datepicker table tr td,
+body.page-tickets .table-striped .datepicker table tr th {
+  background-color: transparent;
+}
+.datepicker table tr td.day:hover,
+body.page-tickets .datepicker table tr td.day.focused {
+  background: #eeeeee;
+  cursor: pointer;
+}
+.datepicker table tr td.old,
+body.page-tickets .datepicker table tr td.new {
+  color: #999999;
+}
+.datepicker table tr td.disabled,
+body.page-tickets .datepicker table tr td.disabled:hover {
+  background: none;
+  color: #999999;
+  cursor: default;
+}
+.datepicker table tr td.today,
+.datepicker table tr td.today:hover,
+.datepicker table tr td.today.disabled,
+body.page-tickets .datepicker table tr td.today.disabled:hover {
+  background-color: #fde19a;
+  background-image: -moz-linear-gradient(top, #fdd49a, #fdf59a);
+  background-image: -ms-linear-gradient(top, #fdd49a, #fdf59a);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fdd49a), to(#fdf59a));
+  background-image: -webkit-linear-gradient(top, #fdd49a, #fdf59a);
+  background-image: -o-linear-gradient(top, #fdd49a, #fdf59a);
+  background-image: linear-gradient(top, #fdd49a, #fdf59a);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fdd49a', endColorstr='#fdf59a', GradientType=0);
+  border-color: #fdf59a #fdf59a #fbed50;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+  color: #000;
+}
+body.page-tickets .datepicker table tr td.today:hover,
+body.page-tickets .datepicker table tr td.today:hover:hover,
+body.page-tickets .datepicker table tr td.today.disabled:hover,
+body.page-tickets .datepicker table tr td.today.disabled:hover:hover,
+body.page-tickets .datepicker table tr td.today:active,
+body.page-tickets .datepicker table tr td.today:hover:active,
+body.page-tickets .datepicker table tr td.today.disabled:active,
+body.page-tickets .datepicker table tr td.today.disabled:hover:active,
+body.page-tickets .datepicker table tr td.today.active,
+body.page-tickets .datepicker table tr td.today:hover.active,
+body.page-tickets .datepicker table tr td.today.disabled.active,
+body.page-tickets .datepicker table tr td.today.disabled:hover.active,
+body.page-tickets .datepicker table tr td.today.disabled,
+body.page-tickets .datepicker table tr td.today:hover.disabled,
+body.page-tickets .datepicker table tr td.today.disabled.disabled,
+body.page-tickets .datepicker table tr td.today.disabled:hover.disabled,
+body.page-tickets .datepicker table tr td.today[disabled],
+body.page-tickets .datepicker table tr td.today:hover[disabled],
+body.page-tickets .datepicker table tr td.today.disabled[disabled],
+body.page-tickets .datepicker table tr td.today.disabled:hover[disabled] {
+  background-color: #fdf59a;
+}
+body.page-tickets .datepicker table tr td.today:active,
+body.page-tickets .datepicker table tr td.today:hover:active,
+body.page-tickets .datepicker table tr td.today.disabled:active,
+body.page-tickets .datepicker table tr td.today.disabled:hover:active,
+body.page-tickets .datepicker table tr td.today.active,
+body.page-tickets .datepicker table tr td.today:hover.active,
+body.page-tickets .datepicker table tr td.today.disabled.active,
+body.page-tickets .datepicker table tr td.today.disabled:hover.active {
+  background-color: #fbf069 \9;
+}
+body.page-tickets .datepicker table tr td.today:hover:hover {
+  color: #000;
+}
+body.page-tickets .datepicker table tr td.today.active:hover {
+  color: #fff;
+}
+body.page-tickets .datepicker table tr td.range,
+body.page-tickets .datepicker table tr td.range:hover,
+body.page-tickets .datepicker table tr td.range.disabled,
+body.page-tickets .datepicker table tr td.range.disabled:hover {
+  background: #eeeeee;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+body.page-tickets .datepicker table tr td.range.today,
+body.page-tickets .datepicker table tr td.range.today:hover,
+body.page-tickets .datepicker table tr td.range.today.disabled,
+body.page-tickets .datepicker table tr td.range.today.disabled:hover {
+  background-color: #f3d17a;
+  background-image: -moz-linear-gradient(top, #f3c17a, #f3e97a);
+  background-image: -ms-linear-gradient(top, #f3c17a, #f3e97a);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f3c17a), to(#f3e97a));
+  background-image: -webkit-linear-gradient(top, #f3c17a, #f3e97a);
+  background-image: -o-linear-gradient(top, #f3c17a, #f3e97a);
+  background-image: linear-gradient(top, #f3c17a, #f3e97a);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f3c17a', endColorstr='#f3e97a', GradientType=0);
+  border-color: #f3e97a #f3e97a #edde34;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+body.page-tickets .datepicker table tr td.range.today:hover,
+body.page-tickets .datepicker table tr td.range.today:hover:hover,
+body.page-tickets .datepicker table tr td.range.today.disabled:hover,
+body.page-tickets .datepicker table tr td.range.today.disabled:hover:hover,
+body.page-tickets .datepicker table tr td.range.today:active,
+body.page-tickets .datepicker table tr td.range.today:hover:active,
+body.page-tickets .datepicker table tr td.range.today.disabled:active,
+body.page-tickets .datepicker table tr td.range.today.disabled:hover:active,
+body.page-tickets .datepicker table tr td.range.today.active,
+body.page-tickets .datepicker table tr td.range.today:hover.active,
+body.page-tickets .datepicker table tr td.range.today.disabled.active,
+body.page-tickets .datepicker table tr td.range.today.disabled:hover.active,
+body.page-tickets .datepicker table tr td.range.today.disabled,
+body.page-tickets .datepicker table tr td.range.today:hover.disabled,
+body.page-tickets .datepicker table tr td.range.today.disabled.disabled,
+body.page-tickets .datepicker table tr td.range.today.disabled:hover.disabled,
+body.page-tickets .datepicker table tr td.range.today[disabled],
+body.page-tickets .datepicker table tr td.range.today:hover[disabled],
+body.page-tickets .datepicker table tr td.range.today.disabled[disabled],
+body.page-tickets .datepicker table tr td.range.today.disabled:hover[disabled] {
+  background-color: #f3e97a;
+}
+body.page-tickets .datepicker table tr td.range.today:active,
+body.page-tickets .datepicker table tr td.range.today:hover:active,
+body.page-tickets .datepicker table tr td.range.today.disabled:active,
+body.page-tickets .datepicker table tr td.range.today.disabled:hover:active,
+body.page-tickets .datepicker table tr td.range.today.active,
+body.page-tickets .datepicker table tr td.range.today:hover.active,
+body.page-tickets .datepicker table tr td.range.today.disabled.active,
+body.page-tickets .datepicker table tr td.range.today.disabled:hover.active {
+  background-color: #efe24b \9;
+}
+body.page-tickets .datepicker table tr td.selected,
+body.page-tickets .datepicker table tr td.selected:hover,
+body.page-tickets .datepicker table tr td.selected.disabled,
+body.page-tickets .datepicker table tr td.selected.disabled:hover {
+  background-color: #9e9e9e;
+  background-image: -moz-linear-gradient(top, #b3b3b3, #808080);
+  background-image: -ms-linear-gradient(top, #b3b3b3, #808080);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#b3b3b3), to(#808080));
+  background-image: -webkit-linear-gradient(top, #b3b3b3, #808080);
+  background-image: -o-linear-gradient(top, #b3b3b3, #808080);
+  background-image: linear-gradient(top, #b3b3b3, #808080);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b3b3b3', endColorstr='#808080', GradientType=0);
+  border-color: #808080 #808080 #595959;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+body.page-tickets .datepicker table tr td.selected:hover,
+body.page-tickets .datepicker table tr td.selected:hover:hover,
+body.page-tickets .datepicker table tr td.selected.disabled:hover,
+body.page-tickets .datepicker table tr td.selected.disabled:hover:hover,
+body.page-tickets .datepicker table tr td.selected:active,
+body.page-tickets .datepicker table tr td.selected:hover:active,
+body.page-tickets .datepicker table tr td.selected.disabled:active,
+body.page-tickets .datepicker table tr td.selected.disabled:hover:active,
+body.page-tickets .datepicker table tr td.selected.active,
+body.page-tickets .datepicker table tr td.selected:hover.active,
+body.page-tickets .datepicker table tr td.selected.disabled.active,
+body.page-tickets .datepicker table tr td.selected.disabled:hover.active,
+body.page-tickets .datepicker table tr td.selected.disabled,
+body.page-tickets .datepicker table tr td.selected:hover.disabled,
+body.page-tickets .datepicker table tr td.selected.disabled.disabled,
+body.page-tickets .datepicker table tr td.selected.disabled:hover.disabled,
+body.page-tickets .datepicker table tr td.selected[disabled],
+body.page-tickets .datepicker table tr td.selected:hover[disabled],
+body.page-tickets .datepicker table tr td.selected.disabled[disabled],
+body.page-tickets .datepicker table tr td.selected.disabled:hover[disabled] {
+  background-color: #808080;
+}
+body.page-tickets .datepicker table tr td.selected:active,
+body.page-tickets .datepicker table tr td.selected:hover:active,
+body.page-tickets .datepicker table tr td.selected.disabled:active,
+body.page-tickets .datepicker table tr td.selected.disabled:hover:active,
+body.page-tickets .datepicker table tr td.selected.active,
+body.page-tickets .datepicker table tr td.selected:hover.active,
+body.page-tickets .datepicker table tr td.selected.disabled.active,
+body.page-tickets .datepicker table tr td.selected.disabled:hover.active {
+  background-color: #666666 \9;
+}
+body.page-tickets .datepicker table tr td.active,
+body.page-tickets .datepicker table tr td.active:hover,
+body.page-tickets .datepicker table tr td.active.disabled,
+body.page-tickets .datepicker table tr td.active.disabled:hover {
+  background-color: #006dcc;
+  background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
+  background-image: -ms-linear-gradient(top, #0088cc, #0044cc);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
+  background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
+  background-image: -o-linear-gradient(top, #0088cc, #0044cc);
+  background-image: linear-gradient(top, #0088cc, #0044cc);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0088cc', endColorstr='#0044cc', GradientType=0);
+  border-color: #0044cc #0044cc #002a80;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+body.page-tickets .datepicker table tr td.active:hover,
+body.page-tickets .datepicker table tr td.active:hover:hover,
+body.page-tickets .datepicker table tr td.active.disabled:hover,
+body.page-tickets .datepicker table tr td.active.disabled:hover:hover,
+body.page-tickets .datepicker table tr td.active:active,
+body.page-tickets .datepicker table tr td.active:hover:active,
+body.page-tickets .datepicker table tr td.active.disabled:active,
+body.page-tickets .datepicker table tr td.active.disabled:hover:active,
+body.page-tickets .datepicker table tr td.active.active,
+body.page-tickets .datepicker table tr td.active:hover.active,
+body.page-tickets .datepicker table tr td.active.disabled.active,
+body.page-tickets .datepicker table tr td.active.disabled:hover.active,
+body.page-tickets .datepicker table tr td.active.disabled,
+body.page-tickets .datepicker table tr td.active:hover.disabled,
+body.page-tickets .datepicker table tr td.active.disabled.disabled,
+body.page-tickets .datepicker table tr td.active.disabled:hover.disabled,
+body.page-tickets .datepicker table tr td.active[disabled],
+body.page-tickets .datepicker table tr td.active:hover[disabled],
+body.page-tickets .datepicker table tr td.active.disabled[disabled],
+body.page-tickets .datepicker table tr td.active.disabled:hover[disabled] {
+  background-color: #0044cc;
+}
+body.page-tickets .datepicker table tr td.active:active,
+body.page-tickets .datepicker table tr td.active:hover:active,
+body.page-tickets .datepicker table tr td.active.disabled:active,
+body.page-tickets .datepicker table tr td.active.disabled:hover:active,
+body.page-tickets .datepicker table tr td.active.active,
+body.page-tickets .datepicker table tr td.active:hover.active,
+body.page-tickets .datepicker table tr td.active.disabled.active,
+body.page-tickets .datepicker table tr td.active.disabled:hover.active {
+  background-color: #003399 \9;
+}
+body.page-tickets .datepicker table tr td span {
+  display: block;
+  width: 23%;
+  height: 54px;
+  line-height: 54px;
+  float: left;
+  margin: 1%;
+  cursor: pointer;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+body.page-tickets .datepicker table tr td span:hover {
+  background: #eeeeee;
+}
+body.page-tickets .datepicker table tr td span.disabled,
+body.page-tickets .datepicker table tr td span.disabled:hover {
+  background: none;
+  color: #999999;
+  cursor: default;
+}
+body.page-tickets .datepicker table tr td span.active,
+body.page-tickets .datepicker table tr td span.active:hover,
+body.page-tickets .datepicker table tr td span.active.disabled,
+body.page-tickets .datepicker table tr td span.active.disabled:hover {
+  background-color: #006dcc;
+  background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
+  background-image: -ms-linear-gradient(top, #0088cc, #0044cc);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
+  background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
+  background-image: -o-linear-gradient(top, #0088cc, #0044cc);
+  background-image: linear-gradient(top, #0088cc, #0044cc);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0088cc', endColorstr='#0044cc', GradientType=0);
+  border-color: #0044cc #0044cc #002a80;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+body.page-tickets .datepicker table tr td span.active:hover,
+body.page-tickets .datepicker table tr td span.active:hover:hover,
+body.page-tickets .datepicker table tr td span.active.disabled:hover,
+body.page-tickets .datepicker table tr td span.active.disabled:hover:hover,
+body.page-tickets .datepicker table tr td span.active:active,
+body.page-tickets .datepicker table tr td span.active:hover:active,
+body.page-tickets .datepicker table tr td span.active.disabled:active,
+body.page-tickets .datepicker table tr td span.active.disabled:hover:active,
+body.page-tickets .datepicker table tr td span.active.active,
+body.page-tickets .datepicker table tr td span.active:hover.active,
+body.page-tickets .datepicker table tr td span.active.disabled.active,
+body.page-tickets .datepicker table tr td span.active.disabled:hover.active,
+body.page-tickets .datepicker table tr td span.active.disabled,
+body.page-tickets .datepicker table tr td span.active:hover.disabled,
+body.page-tickets .datepicker table tr td span.active.disabled.disabled,
+body.page-tickets .datepicker table tr td span.active.disabled:hover.disabled,
+body.page-tickets .datepicker table tr td span.active[disabled],
+body.page-tickets .datepicker table tr td span.active:hover[disabled],
+body.page-tickets .datepicker table tr td span.active.disabled[disabled],
+body.page-tickets .datepicker table tr td span.active.disabled:hover[disabled] {
+  background-color: #0044cc;
+}
+body.page-tickets .datepicker table tr td span.active:active,
+body.page-tickets .datepicker table tr td span.active:hover:active,
+body.page-tickets .datepicker table tr td span.active.disabled:active,
+body.page-tickets .datepicker table tr td span.active.disabled:hover:active,
+body.page-tickets .datepicker table tr td span.active.active,
+body.page-tickets .datepicker table tr td span.active:hover.active,
+body.page-tickets .datepicker table tr td span.active.disabled.active,
+body.page-tickets .datepicker table tr td span.active.disabled:hover.active {
+  background-color: #003399 \9;
+}
+body.page-tickets .datepicker table tr td span.old,
+body.page-tickets .datepicker table tr td span.new {
+  color: #999999;
+}
+body.page-tickets .datepicker .datepicker-switch {
+  width: 145px;
+}
+body.page-tickets .datepicker thead tr:first-child th,
+body.page-tickets .datepicker tfoot tr th {
+  cursor: pointer;
+}
+body.page-tickets .datepicker thead tr:first-child th:hover,
+body.page-tickets .datepicker tfoot tr th:hover {
+  background: #eeeeee;
+}
+body.page-tickets .datepicker .cw {
+  font-size: 10px;
+  width: 12px;
+  padding: 0 2px 0 5px;
+  vertical-align: middle;
+}
+body.page-tickets .datepicker thead tr:first-child .cw {
+  cursor: default;
+  background-color: transparent;
+}
+body.page-tickets .input-append.date .add-on,
+body.page-tickets .input-prepend.date .add-on {
+  cursor: pointer;
+}
+body.page-tickets .input-append.date .add-on i,
+body.page-tickets .input-prepend.date .add-on i {
+  margin-top: 3px;
+}
+body.page-tickets .input-daterange input {
+  text-align: center;
+}
+body.page-tickets .input-daterange input:first-child {
+  -webkit-border-radius: 3px 0 0 3px;
+  -moz-border-radius: 3px 0 0 3px;
+  border-radius: 3px 0 0 3px;
+}
+body.page-tickets .input-daterange input:last-child {
+  -webkit-border-radius: 0 3px 3px 0;
+  -moz-border-radius: 0 3px 3px 0;
+  border-radius: 0 3px 3px 0;
+}
+body.page-tickets .input-daterange .add-on {
+  display: inline-block;
+  width: auto;
+  min-width: 16px;
+  height: 18px;
+  padding: 4px 5px;
+  font-weight: normal;
+  line-height: 18px;
+  text-align: center;
+  text-shadow: 0 1px 0 #ffffff;
+  vertical-align: middle;
+  background-color: #eeeeee;
+  border: 1px solid #ccc;
+  margin-left: -5px;
+  margin-right: -5px;
+}
+
+html[dir="rtl"] .datepicker-dropdown{
+  right: auto!important
+}
